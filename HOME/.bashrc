@@ -9,8 +9,8 @@ esac
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
+history -a
 shopt -s histappend
-
 shopt -s checkwinsize
 
 #Prompt
