@@ -9,8 +9,8 @@ common = set -a; \
 	XDG_DATA_HOME="$${XDG_DATA_HOME:-$$HOME/.local/share}"; \
 	PWD="$${PWD:-$(pwd)}"; \
 	for_all() { \
-		find '$$'* -not -type d -exec sh -c 'for i; do \
-			f="$${i\#$$}"; f="$$(printenv "$${f%%/*}")/$${i\#*/}"; \
+		find * -not -type d -exec sh -c 'for i; do \
+			f="$$(printenv "$${i%%/*}")/$${i\#*/}" || continue; \
 			'"$$*"'; \
 		done' -- {} +; \
 	}
