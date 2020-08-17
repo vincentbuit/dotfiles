@@ -5,6 +5,14 @@ case $- in
     *) return;;
 esac
 
+# ENVIRONMENT ----------------------------------------------------------------
+export PREFIX="$HOME/.local"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$PREFIX/share"
+export XDG_BIN_HOME="$PREFIX/bin"
+export PATH="$XDG_BIN_HOME:$PATH"
+
 #History
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
@@ -14,7 +22,6 @@ shopt -s histappend
 shopt -s checkwinsize
 
 #Prompt
-# PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ ' # Use when entire path should be displayed
 BOLD=$'\033[0;1m' #base01
 INVIS=$'\033[0;30m'
 GREEN=$'\033[01;32m'
@@ -34,10 +41,9 @@ configure_prompt() {
 PROMPT_COMMAND='configure_prompt $?'
 PROMPT_BASE='\[${GREEN}\]\u@\h\[${WHITE}\]:\[${BLUE}\]\W\[${promptcol}\]\$\[${NONE}\] '
 
-# ENVIRONMENT ----------------------------------------------------------------
-export PREFIX="$HOME/.local"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$PREFIX/share"
-export XDG_BIN_HOME="$PREFIX/bin"
-export PATH="$XDG_BIN_HOME:$PATH"
+# NVM
+unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias nvm="PREFIX='' nvm"
