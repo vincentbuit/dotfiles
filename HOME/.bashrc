@@ -34,7 +34,7 @@ configure_prompt() {
     local ROW COL
 
     IFS=\; read -sdR -p $'\E[6n' ROW COL
-    PS1="$([ "$COL" -eq 1 ] && printf "\\\\r" || printf "\\\\n")$PROMPT_BASE"
+    PS1="\[$([ "$COL" -eq 1 ] && printf '\\r' || printf '\\n')\]$PROMPT_BASE"
     promptcol="$([ "$1" -eq 0 ] && echo "$WHITE" || echo "$RED")"
 }
 
@@ -47,3 +47,6 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias nvm="PREFIX='' nvm"
+
+# PATH
+PATH=$PATH:/opt/mssql/bin:/opt/mssql-tools/bin
