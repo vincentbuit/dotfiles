@@ -36,6 +36,18 @@ sudo dnf config-manager \
     https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install docker-ce docker-ce-cli containerd.io # ERROR
 
+# Mssql-server
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2019.repo
+sudo dnf makecache
+sudo dnf install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup # Option 2 & Admin pass from eforah repo (see make file)
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum -y install mssql-tools unixODBC-devel
+
+# Pandoc & LaTeX
+sudo dnf install pandoc
+sudo dnf install texlive-scheme-basic # basic, medium or full
+
 # REST
 
 # Extra browsers
