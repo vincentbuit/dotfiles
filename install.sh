@@ -16,11 +16,14 @@ code --install-extension Zignd.html-css-class-completion # IntelliSense for CSS 
 code --install-extension ms-dotnettools.csharp # C# 
 code --install-extension foxundermoon.shell-format # shellscript, Dockerfile, properties, gitignore, dotenv, hosts, jvmoptions... DocumentFormat
 code --install-extension dsznajder.es7-react-js-snippets # ES7 React/Redux/GraphQL/React-Native snippets
-#code --install-extension johnpapa.angular2 # Angular snippets
+
+code --install-extension GrapeCity.gc-excelviewer # Excel & csv viewer
+code --install-extension yzhang.markdown-all-in-one # MD all you need
 
 code --install-extension msjsdiag.debugger-for-chrome # Chrome debugger
 code --install-extension firefox-devtools.vscode-firefox-debug # Firefox debugger
 code --install-extension msjsdiag.debugger-for-edge # Edge debugger
+#code --install-extension johnpapa.angular2 # Angular snippets
 
 # Node version manager (nvm) with latest nodeJs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -47,6 +50,23 @@ sudo yum -y install mssql-tools unixODBC-devel
 # Pandoc & LaTeX
 sudo dnf install pandoc
 sudo dnf install texlive-scheme-basic # basic, medium or full
+
+# Libre office
+sudo dnf install libreoffice
+
+# Python tools
+sudo pip install yapf # python formatter
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install ffmpeg
+sudo dnf -y install ffmpeg-devel
+sudo pip install youtube-dl
+
+# Swap ESC & Caps
+sudo dnf install gnome-tweaks # Run 'gnome-tweaks' in CLI, go to keyboard & mouse, additional layout options, caps lock behaviour, swap. In code settings: {   "keyboard.dispatch": "keyCode" } 
+
+# Chrome
+https://www.if-not-true-then-false.com/2010/install-google-chrome-with-yum-on-fedora-red-hat-rhel/
 
 # REST
 
