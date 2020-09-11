@@ -5,6 +5,13 @@ case $- in
     *) return;;
 esac
 
+# NVM (special snowflake does not want PREFIX set) ---------------------------
+unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias nvm="PREFIX='' nvm"
+
 # ENVIRONMENT ----------------------------------------------------------------
 export PREFIX="$HOME/.local"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -40,13 +47,6 @@ configure_prompt() {
 
 PROMPT_COMMAND='configure_prompt $?'
 PROMPT_BASE='\[${GREEN}\]\u@\h\[${WHITE}\]:\[${BLUE}\]\W\[${promptcol}\]\$\[${NONE}\] '
-
-# NVM
-unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias nvm="PREFIX='' nvm"
 
 # PATH
 PATH=$PATH:/opt/mssql/bin:/opt/mssql-tools/bin
