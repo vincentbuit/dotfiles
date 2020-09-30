@@ -62,6 +62,9 @@ sudo dnf -y install ffmpeg
 sudo dnf -y install ffmpeg-devel
 sudo pip install youtube-dl
 
+# Agenda
+sudo dnf install calcurse
+
 # Swap ESC & Caps
 sudo dnf install gnome-tweaks # Run 'gnome-tweaks' in CLI, go to keyboard & mouse, additional layout options, caps lock behaviour, swap. In code settings: {   "keyboard.dispatch": "keyCode" } 
 
