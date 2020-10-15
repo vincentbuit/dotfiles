@@ -62,6 +62,13 @@ sudo dnf -y install ffmpeg
 sudo dnf -y install ffmpeg-devel
 sudo pip install youtube-dl
 
+# VLC
+sudo dnf install vlc
+
+# Rood scherm
+sudo dnf install redshift
+redshift -l 51.960287:5.846534 -t 5600:3400
+
 # Agenda
 sudo dnf install calcurse
 
@@ -70,6 +77,16 @@ sudo dnf install gnome-tweaks # Run 'gnome-tweaks' in CLI, go to keyboard & mous
 
 # Chrome
 https://www.if-not-true-then-false.com/2010/install-google-chrome-with-yum-on-fedora-red-hat-rhel/
+
+# Git
+sudo dnf install tig
+
+# TSV utilities
+curl -L https://github.com/eBay/tsv-utils/releases/download/v2.1.1/tsv-utils-v2.1.1_linux-x86_64_ldc2.tar.gz | tar xz
+
+# LOL
+npm install -g leagueoflegends
+
 
 # REST
 
