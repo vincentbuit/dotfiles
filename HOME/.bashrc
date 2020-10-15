@@ -5,6 +5,14 @@ case $- in
     *) return;;
 esac
 
+# ALIASES ---------------------------------------------------------------------
+# Alias noargs gebruik je om default arguments mee te geven indien er geen arguments gegeven zijn.
+alias_noargs() {
+    eval "alias $1='alias_$1() { ((\$#)) || set -- $2;$1 \"\$@\"; }; alias_$1'"
+}
+
+alias_noargs tig '--branches --remotes --tags'
+
 # NVM (special snowflake does not want PREFIX set) ---------------------------
 unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
 export NVM_DIR="$HOME/.config/nvm"
