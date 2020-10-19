@@ -87,6 +87,10 @@ curl -L https://github.com/eBay/tsv-utils/releases/download/v2.1.1/tsv-utils-v2.
 # LOL
 npm install -g leagueoflegends
 
+# TERMINAL
+dnf copr enable pschyska/alacritty
+dnf install alacritty
+dnf install cmake freetype-devel fontconfig-devel libxcb-devel
 
 # REST
 
