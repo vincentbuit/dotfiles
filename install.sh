@@ -95,3 +95,4 @@ dnf install cmake freetype-devel fontconfig-devel libxcb-devel
 # REST
 
 # Extra browsers
+# FIREFOX: Zen Fox: Manual, Adblock Plus, LastPass, ColorZilla, Tab Session Manager
