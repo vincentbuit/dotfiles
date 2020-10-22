@@ -23,6 +23,7 @@ code --install-extension yzhang.markdown-all-in-one # MD all you need
 code --install-extension msjsdiag.debugger-for-chrome # Chrome debugger
 code --install-extension firefox-devtools.vscode-firefox-debug # Firefox debugger
 code --install-extension msjsdiag.debugger-for-edge # Edge debugger
+code --install-extension ms-vscode-remote.remote-ssh # SSH code
 #code --install-extension johnpapa.angular2 # Angular snippets
 
 # Node version manager (nvm) with latest nodeJs
