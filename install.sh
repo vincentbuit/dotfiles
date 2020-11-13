@@ -48,6 +48,11 @@ sudo /opt/mssql/bin/mssql-conf setup # Option 2 & Admin pass from eforah repo (s
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
 sudo yum -y install mssql-tools unixODBC-devel
 
+# USQL (view database)
+sudo dnf install go # Go language (golang)
+go get github.com/xo/usql
+# Azure data studio: https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15
+
 # Pandoc & LaTeX
 sudo dnf install pandoc
 sudo dnf install texlive-scheme-basic # basic, medium or full
@@ -66,9 +71,8 @@ sudo pip install youtube-dl
 # VLC
 sudo dnf install vlc
 
-# Rood scherm
-sudo dnf install redshift
-redshift -l 51.960287:5.846534 -t 5600:3400
+# JSON tool
+sudo dnf install jq
 
 # Agenda
 sudo dnf install calcurse
@@ -92,6 +96,12 @@ npm install -g leagueoflegends
 dnf copr enable pschyska/alacritty
 dnf install alacritty
 dnf install cmake freetype-devel fontconfig-devel libxcb-devel
+
+# RDP client
+sudo dnf install rdesktop 
+
+# ZSH Shell
+dnf install zsh
 
 # REST
 
