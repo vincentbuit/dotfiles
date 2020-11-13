@@ -103,6 +103,10 @@ sudo dnf install rdesktop
 # ZSH Shell
 dnf install zsh
 
+# Window manager
+sudo dnf install sway
+sudo dnf install waybar # Vervang default topbar van sway
+
 # REST
 
 # Extra browsers
