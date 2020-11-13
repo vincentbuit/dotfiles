@@ -9,9 +9,5 @@ setopt HIST_FIND_NO_DUPS
 setopt appendhistory
 
 # Prompt definition -----------------------------------------------------------
-if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [ "$UID" -ne 0 ]; then
-    PROMPT='%B%1~%(?..%F{red})%#%f%b '
-else
-    PROMPT='%B%n@%m %1~%(?..%F{red})%#%f%b '
-fi
+PROMPT='%F{green}%B%n@%m%f:%F{blue}%1~%f%(?..%F{red})%#%f%b '
 zle_highlight=(default:bold)
