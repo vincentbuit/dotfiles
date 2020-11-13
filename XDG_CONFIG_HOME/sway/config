@@ -1,0 +1,90 @@
+xwayland enable
+exec mako
+# APPEARANCE ------------------------------------------------------------------
+font pango:Iosevka SS03 10
+bar {
+    swaybar_command waybar
+    font pango:Iosevka SS03 10
+    position top
+}
+
+output DP-1 pos 0 0 res 1920x1080
+output HDMI-A-1 pos 1920 0 res 1920x1080
+default_border none
+
+for_window [class="^xfreerdp$"] floating disable, border none
+for_window [class="^rdesktop$"] floating disable, border none
+
+# KEYBINDINGS -----------------------------------------------------------------
+set $mod Mod4
+
+bindsym $mod+Shift+Space exec "alacritty"
+
+bindsym $mod+i exec '\
+    sel="$(swaymsg -t get_tree \
+            | sed -n "/firefox/{/.*\(app_id\|class\).*/{s//\1/p;q;}}")" \
+        && swaymsg "[$sel=firefox]" focus \
+        || swaymsg exec browser'
+
+bindsym $mod+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exit
+
+floating_modifier $mod
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# MEDIA -----------------------------------------------------------------------
+mode "media" {
+    bindsym j exec amixer set Master '5%-'
+    bindsym k exec amixer set Master '5%+'
+    bindsym m exec amixer set Master toggle
+    bindsym Escape mode "default"
+    bindsym Ctrl+bracketleft mode "default"
+}
+
+bindsym XF86AudioLowerVolume exec amixer set Master '5%-'
+bindsym XF86AudioRaiseVolume exec amixer set Master '5%+'
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym $mod+a mode "media"
+
+# WORKSPACES ------------------------------------------------------------------
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# MOUSE -----------------------------------------------------------------------
+focus_wrapping no
+mouse_warping none
+seat * hide_cursor 1000
