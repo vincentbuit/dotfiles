@@ -15,6 +15,9 @@ history -a
 shopt -s histappend
 shopt -s checkwinsize
 
+# Input customatization -------------------------------------------------------
+set -o vi
+
 # Prompt
 BOLD=$'\033[0;1m' #base01
 INVIS=$'\033[0;30m'
