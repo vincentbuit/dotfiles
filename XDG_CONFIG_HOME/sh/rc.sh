@@ -1,4 +1,11 @@
 # sh/rc.sh - startup for POSIX shells
+# NVM (special snowflake does not want PREFIX set) ----------------------------
+unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias nvm="PREFIX='' nvm"
+
 # ENVIRONMENT -----------------------------------------------------------------
 set -a
 PREFIX="$HOME/.local"
@@ -22,9 +29,3 @@ alias_noargs() {
 
 alias_noargs tig '--branches --remotes --tags'
 
-# NVM (special snowflake does not want PREFIX set) ----------------------------
-unset PREFIX # = Bad design from nvm, needs a workaround as I will be using PREFIX later on
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias nvm="PREFIX='' nvm"
