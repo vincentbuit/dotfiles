@@ -21,6 +21,11 @@ set +a
 # PATH
 PATH=$PATH:/opt/mssql/bin:/opt/mssql-tools/bin
 
+# Import local profile 
+for x in /etc/profile.d/*.sh "$XDG_CONFIG_HOME/profile.d"/*.sh; do
+    [ -e "$x" ] || continue
+    echo "$x" | grep -q perl || . "$x"
+done
 # ALIASES ---------------------------------------------------------------------
 # Alias noargs gebruik je om default arguments mee te geven indien er geen arguments gegeven zijn.
 alias_noargs() {
