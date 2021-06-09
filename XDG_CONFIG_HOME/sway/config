@@ -24,7 +24,7 @@ bindsym $mod+i exec '\
     sel="$(swaymsg -t get_tree \
             | sed -n "/firefox/{/.*\(app_id\|class\).*/{s//\1/p;q;}}")" \
         && swaymsg "[$sel=firefox]" focus \
-        || swaymsg exec browser'
+        || swaymsg exec MOZ_ENABLE_WAYLAND=1 firefox'
 
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
