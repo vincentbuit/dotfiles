@@ -1,0 +1,22 @@
+[user]
+	name = Vincent Buit
+	email = vincent@vincentbuit.com
+[alias]
+	i = status --short --branch
+	s = switch
+	r = restore
+	c = commit -m 
+	sr = restore --staged
+	ia = add --patch
+	ic = ! git ia && git commit
+	ir = restore --patch
+	isr = restore --patch --staged
+	irb = rebase --interactive
+	crb = rebase --continue
+	up = ! "name() { git symbolic-ref --short HEAD; }; \
+		[ -z \"$(git config \"branch.$(name).merge\")\" ] \
+		&& git push -u origin \"$(name)\" \"$@\" || git push \"$@\""
+[core]
+	pager = less -+XF -x4
+[stash]
+	showPatch = true
