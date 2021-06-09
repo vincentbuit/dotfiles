@@ -34,3 +34,49 @@ alias_noargs() {
 
 alias_noargs tig '--branches --remotes --tags'
 
+# SCRIPTS ---------------------------------------------------------------------
+git_promptline() {
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 \
+         && {
+            git rev-list --walk-reflogs --count refs/stash 2>/dev/null ||echo 0
+            git status --porcelain --branch 2>/dev/null
+         } | awk '
+            NR == 1 { stashes = $0 }
+            /^## HEAD/ { branch = "(detached)" }
+            /^## Initial commit on master$/ { branch = "master" }
+            /^## / {
+                remotesplit = index($2, "...")
+                if (remotesplit) {
+                    branch = substr($2, 1, remotesplit - 1)
+                    remote = substr($2, remotesplit + 3)
+                } else { branch = $2}
+                $1 = $2 = ""
+                n = split($0, x, ",")
+                for (i = 1; i <= n; i++) {
+                    split(x[i], y, " ")
+                    rs[substr(y[1], (i - 3) * -1)] = \
+                        substr(y[2], 1, length(y[2]) - (i == n ? 1 : 0))
+                }
+                behind = rs["behind"]; ahead = rs["ahead"]
+            }
+            /^.[MD] / { unstaged += 1 }
+            /^[^ ?]. / { staged += 1 }
+            /^\?\? / { untracked += 1 }
+            /^(.U|U.|AA|DD) / { state = "|merge" }
+            END {
+                if (remote != "") {
+                    if (substr(remote, index(remote, "/") + 1) == branch) {
+                        remote = (ahead + behind == 0) ? ":" : ""
+                    } else { remote = ":" remote }
+                }
+                untracked = untracked > 0 ? "?" : ""
+                unstaged = unstaged > 0 ? "*" : ""
+                staged = staged > 0 ? "+" : ""
+                behind = behind > 0 ? "↓" behind : ""
+                ahead = ahead > 0 ? "↑" ahead : ""
+                stashes = stashes > 0 ? "~" stashes : ""
+                printf("%s%s%s ", untracked, unstaged, staged)
+                printf("(%s%s%s%s%s)", branch, remote, behind, ahead, state)
+                printf("%s", stashes)
+            }' 2>/dev/null
+}
