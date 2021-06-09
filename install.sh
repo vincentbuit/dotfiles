@@ -33,6 +33,12 @@ nvm install 14.8.0
 # .NET Core 3.1 SDK which includes ASP.NET Core runtime (includes both .NET Core- and ASP.NET Core runtime)
 sudo dnf install dotnet-sdk-3.1
 
+# UPDATE DOTNET
+sudo dnf list installed | grep "dotnet"
+sudo dnf remove dotnet-sdk- TAB
+sudo dnf list dotnet
+
+
 # Docker
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager \
@@ -107,7 +113,13 @@ dnf install zsh
 sudo dnf install sway
 sudo dnf install waybar # Vervang default topbar van sway
 
+# Ump
+git clone https://github.com/milhnl/ump.git
+make install
+sudo dnf install socat
+sudo dnf isntall mpv
+
 # REST
 
 # Extra browsers
-# FIREFOX: Zen Fox: Manual, Adblock Plus, LastPass, ColorZilla, Tab Session Manager
+# FIREFOX: Zen Fox: Manual, Adblock Plus, LastPass, ColorZilla, Tab Session Manager, React Developer Tools
